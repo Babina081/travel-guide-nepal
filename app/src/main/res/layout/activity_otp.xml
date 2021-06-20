@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".activities.loginregistrationactivities.forgetpassword.OTP_Activity">
+
+    <ImageView
+        android:id="@+id/cancelOTP"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/clear_twin"
+        android:layout_margin="20dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="CODE"
+        android:textColor="@color/black"
+        android:textSize="60sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/raleway_bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text= "VERIFICATION"
+        android:textColor="@color/black"
+        android:textSize="50sp"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:fontFamily="@font/raleway_bold"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Enter one time password sent on your email"
+        android:textSize="22sp"
+        android:textColor="@color/black"
+        android:gravity="center_horizontal"
+        android:layout_margin="50dp"/>
+
+    <com.chaos.view.PinView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:itemCount="6"
+        app:itemWidth="50dp"
+        app:itemHeight="50dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        app:lineColor="@color/Twine"
+        android:itemBackground="@color/SorrellBrown"
+        style="@style/PinWidget.PinView"
+        android:inputType="number"
+        android:cursorVisible="true"
+        app:cursorColor="@color/black"
+        app:hideLineWhenFilled="true"
+        app:itemRadius="5dp"/>
+
+    <Button
+        android:text="Verify Code"
+        android:id="@+id/btnchangepw_step2_verify"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/SorrellBrown"
+        android:textStyle="bold"
+        android:textSize="30sp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="20dp"
+        android:background="@drawable/bg_email"
+        android:elevation="20dp"
+        />
+
+</LinearLayout>

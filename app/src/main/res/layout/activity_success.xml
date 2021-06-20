@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activities.loginregistrationactivities.Success">
+
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+   android:orientation="vertical"
+    android:id="@+id/LinearLayout">
+
+   <TextView
+       android:layout_width="fill_parent"
+       android:layout_height="wrap_content"
+       android:gravity="center"
+       android:text="Welcome to Profile"
+       android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+       android:layout_above="@id/LinearLayout"
+       android:layout_margin="50dp"
+       android:textStyle="bold"
+       android:textSize="30sp"/>
+
+   <TextView
+       android:id="@+id/tvFirstName"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:padding="10dp"
+       android:text="userfirstname"
+       android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+       android:layout_margin="20dp"/>
+
+   <TextView
+       android:id="@+id/tvLastname"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:padding="10dp"
+       android:text="userlastname"
+       android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+       android:layout_margin="20dp"/>
+
+   <TextView
+       android:id="@+id/textViewEmail"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:padding="10dp"
+       android:text="useremail"
+       android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+       android:layout_margin="20dp"/>
+
+   <Button
+       android:id="@+id/buttonLogout"
+       android:layout_width="300dp"
+       android:layout_height="50dp"
+       android:layout_marginTop="150dp"
+       android:layout_marginLeft="50dp"
+       android:background="@drawable/greenbuttonbg"
+       android:text="Logout" />
+
+</LinearLayout>
+   <!-- <LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="fill_parent"
+    android:layout_marginBottom="8dp"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="8dp"
+    android:orientation="vertical"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toEndOf="parent"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.0">
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Welcome to Profile"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />-->
+
+   <!-- <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp">-->
+
+
+       <!-- <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Id"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/textViewId"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="id"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        </TableRow>-->
+
+       <!-- <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Firstname"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/tvFirstName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="userfirstname"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        </TableRow>-->
+
+        <!--<TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Lastname"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/tvLastname"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="userlastname"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        </TableRow>-->
+
+        <!--<TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Email"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/textViewEmail"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="useremail"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        </TableRow>-->
+
+        <!--<TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Password"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/textViewPassword"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="password"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        </TableRow>-->
+
+     <!--   <TableRow>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="Confirm"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Large" />
+
+            <TextView
+                android:id="@+id/textViewConfirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:text="confirm"
+                android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium" />
+
+        </TableRow>-->
+
+
+   <!-- </TableLayout>-->
+<!--
+    <Button
+        android:id="@+id/buttonLogout"
+        android:layout_width="210dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="150dp"
+        android:layout_marginLeft="75dp"
+        android:text="Logout" />
+</LinearLayout>-->
+
+</RelativeLayout>

@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".activities.loginregistrationactivities.LoginActivity"
+    android:background="@color/Twine">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="90dp"
+        android:id="@+id/linearl1"
+        android:orientation="horizontal">
+        <Button
+        android:layout_width="wrap_content"
+        android:layout_height="80dp"
+        android:id="@+id/btnBacktoSigninOptions"
+        android:drawableLeft="@drawable/ic_arrow_back_black_24dp"
+        android:drawableStart="@drawable/ic_arrow_back_black_24dp"
+        android:background="@drawable/bg_facebook"
+        android:layout_marginStart="20dp"
+            android:layout_marginLeft="20dp"
+            android:padding="10dp"
+            android:layout_marginTop="5dp"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_below="@id/linearl1"
+        android:id="@+id/LinearLayout"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="650dp"
+        android:layout_centerVertical="true"
+        android:background="@drawable/bgbtnloginregister"
+        >
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Login"
+            android:textSize="50dp"
+            android:textStyle="bold"
+            android:textColor="@color/SorrellBrown"
+            android:layout_marginBottom="10dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp"
+            />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_google"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="30dp">
+            <EditText
+                android:id="@+id/editTextEmail"
+                android:hint="Email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:passwordToggleEnabled="true"
+            android:background="@drawable/bg_google"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp">
+            <EditText
+                android:id="@+id/editTextPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:hint="Password" />
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Remember my login information"
+            android:id="@+id/chRemember"
+            android:layout_marginBottom="20dp"
+            android:checked="false"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="20dp"
+            android:textColor="@color/SorrellBrown"
+            android:textSize="15sp"
+            />
+
+        <Button
+            android:textColor="@color/SorrellBrown"
+            android:textStyle="bold"
+            android:textSize="30sp"
+            android:text="Login"
+            android:id="@+id/buttonRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginRight="20dp"
+            android:background="@drawable/bg_facebook"
+            android:elevation="20dp"
+            />
+
+        <TextView
+            android:id="@+id/forgetPassword"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Forget your password?"
+            android:gravity="left"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:onClick="forgetPw"
+            android:textColor="@color/SorrellBrown"
+            android:layout_marginTop="20dp"
+            android:textSize="18sp"
+            android:layout_marginBottom="20dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:background="@color/SorrellBrown"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            />
+        <TextView
+            android:id="@+id/textRegister"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Don't have an account yet? Create one!!!"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:onClick="register"
+            android:textColor="@color/SorrellBrown"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:textSize="18sp"/>
+
+    </LinearLayout>
+
+
+
+
+</RelativeLayout>
