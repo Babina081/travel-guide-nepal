@@ -1,5 +1,6 @@
 package com.example.bmenudemo.activities.homePageActivities.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -8,9 +9,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import com.example.bmenudemo.R;
+import com.example.bmenudemo.activities.homePageActivities.MainActivity;
 import com.example.bmenudemo.adapter.PlaceAdapter;
 import com.example.bmenudemo.models.PlaceListModel;
 
@@ -33,9 +37,11 @@ public class FavouriteFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-//    SearchView etSearch;
+    //    SearchView etSearch;
     RecyclerView recent_recycler;
     PlaceAdapter placeAdapter;
+    TextView textAdd;
+    ImageView imgAddtoWishList;
 
     private static ArrayList<PlaceListModel> placeListModels = new ArrayList<>();
 
@@ -92,6 +98,24 @@ public class FavouriteFragment extends Fragment {
         });*/
 
         recent_recycler = view.findViewById(R.id.recent_recycler1);
+        textAdd = view.findViewById(R.id.txtAddtoWishList);
+ /*       imgAddtoWishList=view.findViewById(R.id.imgAddtoWishList);*/
+
+
+        textAdd.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), MainActivity.class));
+            }
+        });
+
+      /* imgAddtoWishList.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getContext(), MainActivity.class));
+            }
+        });
+*/
 
         return view;
     }

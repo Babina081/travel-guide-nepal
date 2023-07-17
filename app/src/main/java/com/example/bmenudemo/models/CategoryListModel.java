@@ -2,11 +2,18 @@
 package com.example.bmenudemo.models;
 
 
+import java.util.List;
 
 public class CategoryListModel {
 
     private String categoryid;
     private String categoryname;
+//    private List<PlaceListModel> placeListModels;
+
+//    public CategoryListModel( String categoryname, List<PlaceListModel> placeListModels) {
+//        this.categoryname = categoryname;
+//        this.placeListModels = placeListModels;
+//    }
 
     public CategoryListModel() {
     }
@@ -35,4 +42,12 @@ public class CategoryListModel {
     public void setCategoryname(String categoryname) {
         this.categoryname = categoryname;
     }
+
+//    public List<PlaceListModel> getPlaceListModels() {
+//        return placeListModels;
+//    }
+//
+//    public void setPlaceListModels(List<PlaceListModel> placeListModels) {
+//        this.placeListModels = placeListModels;
+//    }
 }

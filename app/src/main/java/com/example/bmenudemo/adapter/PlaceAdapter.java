@@ -13,6 +13,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.bmenudemo.activities.CallBackCheckLike;
+import com.example.bmenudemo.activities.HandleLikeDislike;
+import com.example.bmenudemo.activities.homePageActivities.SessionManager;
 import com.example.bmenudemo.constantsClass.Constants;
 import com.example.bmenudemo.activities.homePageActivities.PlaceDetailActivity;
 import com.example.bmenudemo.viewHolder.PlaceViewHolder;
@@ -28,8 +31,14 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceViewHolder> implemen
     List<PlaceListModel> dataFull;
     Context context;
 
+
+
     public PlaceAdapter() {
     }
+
+//    public PlaceAdapter(List<PlaceListModel> data) {
+//        this.data = data;
+//    }
 
     public PlaceAdapter(List<PlaceListModel> data, Context context) {
         this.data = data;
@@ -41,7 +50,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceViewHolder> implemen
     @Override
     public PlaceViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
-        View view = inflater.inflate(R.layout.row_item_recents, parent, false);
+        View view = inflater.inflate(R.layout.row_item_places, parent, false);
         return new PlaceViewHolder(view);
     }
 
@@ -51,15 +60,10 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceViewHolder> implemen
         final PlaceListModel example = data.get(position);
 
         holder.placename.setText(example.getPlacename());
-        holder.description.setText(example.getDescription());
+//        holder.description.setText(example.getDescription());
         holder.placelocation.setText(example.getPlacelocation());
         Glide.with(holder.img.getContext()).load(Constants.URL_GLIDE_IMAGE + example.getPhoto()).into(holder.img);
-        holder.likecount.setText(example.getLikes());/*setsetOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Toast.makeText(context, example.getPlacename() + " Liked", Toast.LENGTH_SHORT).show();
-            }
-        });*/
+        holder.likecount.setText(example.getLikes());
 
         holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -77,7 +81,48 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceViewHolder> implemen
             }
         });
 
+        // getting like button status
+//       holder.getLikeButtonStatus(context, example.getPlaceid(), new SessionManager(context).getUserId());
 
+        //favourite system
+        holder.isliked.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+//               holder.testclick = true;
+//
+//                if(holder.testclick==true){
+//                    new HandleLikeDislike().checkLikeStatus(context, new SessionManager(context).getUserId(), example.getPlaceid(), new CallBackCheckLike() {
+//                        @Override
+//                        public void onSuccessResponse(boolean checklike) {
+//                            if(checklike==true){
+//                                new HandleLikeDislike().deleteLike(context, new SessionManager(context).getUserId(), example.getPlaceid(), new CallBackCheckLike() {
+//                                    @Override
+//                                    public void onSuccessResponse(boolean checklike) {
+//                                        if (checklike==true){
+//                                           holder.isliked.setImageResource(R.drawable.favorite);
+//                                            holder.testclick=false;
+//                                        }
+//                                    }
+//                                });
+//                            }
+//                            else{
+//                                new HandleLikeDislike().insertLike(context, new SessionManager(context).getUserId(), example.getPlaceid(), new CallBackCheckLike() {
+//                                    @Override
+//                                    public void onSuccessResponse(boolean checklike) {
+//                                        if(checklike==true){
+//                                            holder.isliked.setImageResource(R.drawable.like);
+//                                            holder.testclick=false;
+//
+//                                        }
+//                                    }
+//                                });
+//                            }
+//                        }
+//                    });
+//                }
+            }
+        });
     }
 
     @Override
@@ -124,6 +169,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceViewHolder> implemen
         }
 
     };
+
     /*ArrayList<PlaceListModel> placeListModels;
     LayoutInflater inflater;
 
@@ -159,5 +205,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceViewHolder> implemen
     public int getItemCount() {
         return placeListModels.size();
     }*/
+
+
 
 }

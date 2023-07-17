@@ -46,7 +46,7 @@ public class Success extends AppCompatActivity {
         String lname = sessionManager.getLastname();
         lastName.setText(lname);
 */
-        String em = sessionManager.getUsername();
+        String em = sessionManager.getEmail();
         email.setText(em);
 
         /*String fn=sessionManager.getFirstname();
@@ -66,7 +66,7 @@ public class Success extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         sessionManager.setLogin(false);
-                        sessionManager.setUsername("");
+                        sessionManager.setEmail("");
                        /* sessionManager.setFirstName("");
                         sessionManager.setLastname("");*/
                         moveToLogin();

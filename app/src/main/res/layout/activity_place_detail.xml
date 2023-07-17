@@ -17,63 +17,35 @@
         android:orientation="vertical"
         >
 
-     <!--   <com.google.android.material.appbar.AppBarLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="300dp">
 
-            <include layout="@layout/toolbar_home" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/placeimage"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg"
+        android:adjustViewBounds="true" />
+    <Button
+        android:id="@+id/btnlikeunlike"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:background="@drawable/favorite_white"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_alignParentRight="true"/>
 
-        </com.google.android.material.appbar.AppBarLayout>-->
-
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="300dp"
-                android:id="@+id/placeimage"
-                android:scaleType="centerCrop"
-                android:src="@mipmap/ic_launcher"
-                android:adjustViewBounds="true" />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:id="@+id/placelocation"
-                android:drawableLeft="@drawable/location"
-                android:layout_marginTop="10dp"
-                android:text="Place Name"
-                android:textSize="18sp"
-                android:textColor="@color/black"
-                android:drawablePadding="5dp"
-                android:layout_marginLeft="10dp"
-                />
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/like"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="200dp"/>
-
-            <ImageView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:src="@drawable/save"
-                android:layout_marginTop="10dp"
-                android:layout_marginLeft="20dp"
-                />
-
-
-        </LinearLayout>
-
+</RelativeLayout>
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/placename"
             android:layout_marginTop="2dp"
-            android:layout_marginLeft="20dp"
+            android:layout_marginLeft="10dp"
             android:layout_marginRight="20dp"
             android:text="Place Name"
             android:textSize="30sp"
@@ -81,133 +53,73 @@
             android:textStyle="bold"
             />
 
+        <View
+            android:layout_marginLeft="10dp"
+            android:layout_width="90dp"
+            android:layout_height="2dp"
+            android:background="@color/navy" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="5dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/like"
+                android:layout_marginLeft="10dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/likeText"
+                android:text="0"
+                android:layout_marginLeft="2dp"
+               />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=" People like this"
+                android:textColor="@color/COLOR4"
+               />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableLeft="@drawable/comment"
+                android:textColor="@color/COLOR4"
+                android:text="16"
+                android:layout_marginLeft="30dp"/>
+
+
+        </LinearLayout>
+
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/placedescription"
             android:layout_marginTop="10dp"
-            android:layout_marginLeft="20dp"
-            android:layout_marginRight="20dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:text="Here is the description of the place"
             android:textSize="20sp"
-            android:textColor="@color/colorPrimaryDark"
             />
 
-       <!-- <LinearLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="20dp">-->
-
-         <!--   <ImageView
-                android:layout_width="30dp"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="20dp"
-                android:src="@drawable/location" />
--->
-
-       <!-- </LinearLayout>-->
-
-       <LinearLayout
-           android:layout_width="match_parent"
-           android:layout_height="wrap_content"
-           android:background="@drawable/bg_button_rounded"
-           android:elevation="5dp"
-           android:padding="2dp"
-           android:layout_marginTop="10dp"
-           >
-
-        <!--   <LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="horizontal"
-               android:gravity="end">-->
-
-               <!--<ImageView
-                   android:id="@+id/imageViewLike"
-                   android:layout_width="30dp"
-                   android:layout_height="30dp"
-                   android:layout_marginTop="10dp"
-                   android:layout_marginStart="16dp"
-                   android:layout_marginBottom="16dp"
-                   app:srcCompat="@drawable/like" />-->
-               <TextView
-                   android:id="@+id/tvLike"
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:layout_marginRight="20dp"
-                   android:layout_marginLeft="16dp"
-                   android:drawableLeft="@drawable/like"
-                   android:drawablePadding="5dp"
-                   android:text="Like"
-                   android:textColor="@color/black"
-                   android:textSize="25sp"
-                   android:textStyle="normal"
-                   />
-
-          <!-- </LinearLayout>-->
-
-           <!-- <LinearLayout
-           android:layout_width="wrap_content"
-           android:layout_height="wrap_content"
-           android:orientation="horizontal"
-           >-->
-          <!-- <ImageView
-               android:id="@+id/imageViewComment"
-               android:layout_width="30dp"
-               android:layout_height="30dp"
-               app:srcCompat="@drawable/comment"
-               android:layout_marginTop="10dp"
-               android:layout_marginStart="16dp"
-               android:layout_marginBottom="16dp"
-               />-->
-                <TextView
-                    android:id="@+id/tvComment"
-                    android:layout_marginRight="10dp"
-                    android:layout_marginLeft="16dp"
-                    android:drawableLeft="@drawable/comment"
-                    android:padding="5dp"
-                    android:textColor="@color/black"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="Comment"
-                    android:textSize="25sp"
-                    android:textStyle="normal"
-
-                    />
-          <!--  </LinearLayout>-->
-
-           <!--<LinearLayout
-               android:layout_width="wrap_content"
-               android:layout_height="wrap_content"
-               android:orientation="horizontal"
-              >-->
-          <!-- <ImageView
-               android:id="@+id/imageViewShare"
-               android:layout_width="30dp"
-               android:layout_height="30dp"
-               app:srcCompat="@drawable/share"
-               android:layout_marginTop="10dp"
-               android:layout_marginStart="16dp"
-               android:layout_marginBottom="16dp"
-               />-->
-
-               <TextView
-                   android:id="@+id/tvShare"
-                   android:drawableLeft="@drawable/share"
-                   android:padding="5dp"
-
-                   android:layout_width="wrap_content"
-                   android:layout_height="wrap_content"
-                   android:text="Share"
-                   android:textSize="25sp"
-                   android:textColor="@color/black"
-                   android:textStyle="normal"
-
-                   />
-          <!-- </LinearLayout>-->
-
-       </LinearLayout>
+            android:id="@+id/placelocation"
+            android:drawableLeft="@drawable/location"
+            android:layout_marginTop="10dp"
+            android:text="Place Location"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            android:drawablePadding="5dp"
+            android:layout_marginLeft="10dp"
+            />
 
         <TextView
             android:layout_width="match_parent"
@@ -222,12 +134,14 @@
         <View
             android:layout_marginLeft="10dp"
             android:layout_width="90dp"
-            android:layout_height="1dp"
+            android:layout_height="2dp"
             android:background="@color/navy" />
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="170dp"
     android:orientation="horizontal">
+
     <Button
         android:layout_width="180dp"
         android:layout_height="150dp"
@@ -236,7 +150,7 @@
         android:textStyle="bold"
         android:textSize="22sp"
         android:textColor="@color/navy"
-        android:drawableStart="@drawable/location"
+        android:id="@+id/btnNavigate"
         android:layout_margin="10dp"
         android:elevation="10dp"
       />
@@ -250,28 +164,56 @@
         android:textSize="22sp"
         android:textColor="@color/Twine"
         android:layout_margin="10dp"
-        android:drawableStart="@drawable/comment"
-        android:elevation="10dp"/>
+
+        android:elevation="10dp"
+        android:id="@+id/btnReview"/>
+
 </LinearLayout>
 
-
         <TextView
-            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
+            android:layout_marginLeft="10dp"
             android:text="Comments"
-            android:textColor="@color/black"
-            android:textSize="22sp"
+            android:textColor="@color/SantaFe"
+            android:textSize="30sp"
             android:textStyle="bold" />
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/commentsRV"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="16dp" />
+        <View
+            android:layout_marginLeft="10dp"
+            android:layout_width="90dp"
+            android:layout_height="2dp"
+            android:background="@color/navy" />
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:id="@+id/rvComments"
+            />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            >
+
+            <EditText
+                android:layout_width="350dp"
+                android:layout_height="40dp"
+                android:id="@+id/txtComment"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/bg_button_border"
+                />
+
+            <ImageView
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:id="@+id/btnAddComment"
+                android:src="@drawable/ic_baseline_send_24"
+                />
+
+        </LinearLayout>
 
     </LinearLayout>
 

@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:elevation="10dp"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="10dp"
+    android:id="@+id/cardView"
+    >
+
+    &lt;!&ndash;<LinearLayout
+        android:id="@+id/swipeLayout"
+        android:layout_width="match_parent"
+        android:layout_height="260dp"
+        android:background="@color/bottom_nav_icon"
+        android:orientation="horizontal"
+        android:visibility="visible"
+        android:weightSum="3">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="260dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Archieve"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold" />
+
+
+        <TextView
+            android:id="@+id/undo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:paddingBottom="5dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:paddingTop="5dp"
+            android:text="Undo"
+            android:textColor="@android:color/white"
+            android:textSize="22sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>&ndash;&gt;
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <ImageView
+            android:id="@+id/imageholder"
+            android:layout_width="match_parent"
+            android:layout_height="150dp"
+            android:adjustViewBounds="true"
+            android:scaleType="fitXY"
+            android:padding="2dp"
+            />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Place Name"
+            android:textAlignment="center"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:id="@+id/row_place_name"
+            android:gravity="center_horizontal"
+            android:textColor="@color/black"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginRight="100dp"
+            android:layout_marginLeft="100dp"
+            android:background="@color/navy"
+            />
+
+       &lt;!&ndash; <TextView
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:text="Description"
+            android:textSize="20sp"
+            android:id="@+id/row_description"
+            />&ndash;&gt;
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/location"
+                android:layout_marginTop="10dp"
+                />
+
+            <TextView
+                android:layout_width="280dp"
+                android:layout_height="40dp"
+                android:text="Place Location"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:id="@+id/row_place_location"
+                android:gravity="center_vertical"
+                />
+
+            <Button
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/like"
+                android:layout_marginBottom="5dp"
+                android:layout_gravity="bottom|end"/>
+
+
+            <TextView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:layout_marginRight="5dp"
+                android:text="10"
+                android:id="@+id/like"
+                android:gravity="center_vertical"
+                android:textSize="20sp"/>
+
+            &lt;!&ndash; <ImageView
+                android:id="@+id/like"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+               android:layout_marginRight="20dp"
+                android:layout_marginBottom="30dp"
+              android:src="@drawable/like" />
+&ndash;&gt;
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+</androidx.cardview.widget.CardView>-->
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+xmlns:app="http://schemas.android.com/apk/res-auto"
+xmlns:tools="http://schemas.android.com/tools"
+android:layout_width="match_parent"
+android:layout_height="wrap_content"
+android:orientation="vertical"
+android:elevation="10dp"
+app:cardCornerRadius="5dp"
+android:layout_margin="10dp"
+android:id="@+id/cardView"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <ImageView
+        android:id="@+id/imageholder"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitXY"
+        android:padding="2dp"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:text="Place Name"
+        android:textAlignment="center"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:id="@+id/row_place_name"
+        android:gravity="center_horizontal"
+        android:textColor="@color/black"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginLeft="100dp"
+        android:background="@color/navy"
+        />
+
+   <!-- <ru.embersoft.expandabletextview.ExpandableTextView
+        android:id="@+id/row_description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginTop="4dp"
+        app:etv_animationTime="20"
+        app:etv_expandLines="0"
+        app:etv_showLine="false"
+        android:paddingBottom="1dp"
+        app:etv_textContentSize="20sp"
+        app:etv_textExpand="Show more"
+        app:etv_textShrink="Show less"
+        app:etv_textContentColor="#8A000000"
+        app:etv_textStateColor="#8A000000"
+        style="@style/TextAppearance.AppCompat.Body1"
+        />-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/location"
+            android:layout_marginTop="10dp"
+            />
+
+        <TextView
+            android:layout_width="280dp"
+            android:layout_height="40dp"
+            android:text="Place Location"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:id="@+id/row_place_location"
+            android:gravity="center_vertical"
+            />
+
+        <ImageButton
+            android:id="@+id/btnIsLiked"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/favorite"
+            android:layout_marginBottom="5dp"
+            android:layout_gravity="bottom|end"
+            />
+
+        <TextView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="10dp"
+            android:text="10"
+            android:id="@+id/like"
+            android:gravity="center_vertical"
+            android:textSize="20sp"
+            />
+
+
+    </LinearLayout>
+
+</LinearLayout>
+
+
+</androidx.cardview.widget.CardView>

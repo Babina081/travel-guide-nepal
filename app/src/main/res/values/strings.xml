@@ -33,4 +33,14 @@
     <string name="desc3">Well, how can I reach my destination? Check the map.</string>
     <string name="desc4">Ready to leave for the journey?</string>
 
+    <string name="slide1">Search</string>
+    <string name="slide2">Save</string>
+    <string name="slide3">Navigate</string>
+    <string name="slide4">Travel</string>
+    <string name="slide5">Travel</string>
+    <string name="slide6">Travel</string>
+    <string name="slide7">Travel</string>
+    <string name="slide8">Travel</string>
+    <string name="slide9">Travel</string>
 </resources>
+

@@ -22,6 +22,7 @@ import com.android.volley.toolbox.Volley;
 import com.example.bmenudemo.R;
 import com.example.bmenudemo.adapter.CategoryAdapter;
 import com.example.bmenudemo.adapter.PlaceAdapter;
+import com.example.bmenudemo.adapter.RecentPlaceAdapter;
 import com.example.bmenudemo.constantsClass.Constants;
 import com.example.bmenudemo.models.CategoryListModel;
 import com.example.bmenudemo.models.PlaceListModel;
@@ -52,11 +53,13 @@ public class SearchFragment extends Fragment {
 
     CategoryAdapter categoryAdapter;
     PlaceAdapter placeAdapter;
+    RecentPlaceAdapter recentPlaceAdapter;
 
-    RecyclerView rvExplore,rvRecent,rvCategory;
+    RecyclerView rvExplore, rvRecent, rvCategory;
 
-    private static ArrayList<CategoryListModel> categoryListModels= new ArrayList<>();
+    private static ArrayList<CategoryListModel> categoryListModels = new ArrayList<>();
     private static ArrayList<PlaceListModel> placeListModels = new ArrayList<>();
+
 
     public SearchFragment() {
         // Required empty public constructor
@@ -94,8 +97,9 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
 
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_search, container, false);
-        search=view.findViewById(R.id.etSearch2);
+        View view = inflater.inflate(R.layout.fragment_search, container, false);
+
+        search = view.findViewById(R.id.etSearch2);
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String s) {
@@ -106,31 +110,39 @@ public class SearchFragment extends Fragment {
             @Override
             public boolean onQueryTextChange(String s) {
                 placeAdapter.getFilter().filter(s);
+                categoryAdapter.getFilter().filter(s);
                 return false;
             }
         });
 
 
-        rvRecent = view.findViewById(R.id.recent_recycler);
-        rvCategory=view.findViewById(R.id.rv_category);
-
+        rvRecent = view.findViewById(R.id.rv_recent);
         rvRecent.setHasFixedSize(true);
-        rvRecent.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
-        extractPlace();
+        rvRecent.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        extractRecentPlace();
 
+        rvExplore = view.findViewById(R.id.rv_explore);
+        rvExplore.setHasFixedSize(true);
+        rvExplore.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        extractNearbyPlaces();
+
+        rvCategory = view.findViewById(R.id.rv_category);
         rvCategory.setHasFixedSize(true);
-        rvCategory.setLayoutManager(new LinearLayoutManager(getContext(),LinearLayoutManager.HORIZONTAL,false));
+        rvCategory.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         GetCategory();
+
 
         return view;
     }
 
     private void GetCategory() {
 
-        StringRequest request = new StringRequest(Request.Method.GET, /*"http://192.168.254.191/travel/retrieve.php"*/ Constants.URL_RETRIEVE_CATEGORY,
+        StringRequest request = new StringRequest(Request.Method.GET,
+                /*"http://192.168.254.191/travel/retrieve.php"*/ Constants.URL_RETRIEVE_CATEGORY,
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
+
                         categoryListModels.clear();
                         try {
                             JSONObject jsonObject = new JSONObject(response);
@@ -145,10 +157,11 @@ public class SearchFragment extends Fragment {
 
                                     CategoryListModel category = new CategoryListModel(categoryid, categoryname);
                                     categoryListModels.add(category);
+
                                     categoryAdapter = new CategoryAdapter(categoryListModels, getContext());
 
                                     rvCategory.setAdapter(categoryAdapter);
-                                   categoryAdapter.notifyDataSetChanged();
+                                    categoryAdapter.notifyDataSetChanged();
                                 }
                             } else {
                                 Toast.makeText(getContext(), response, Toast.LENGTH_LONG).show();
@@ -168,12 +181,64 @@ public class SearchFragment extends Fragment {
         requestQueue.add(request);
     }
 
-    private void extractPlace() {
+    private void extractRecentPlace() {
 
-        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET, Constants.URL_RETRIEVE, null
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
+                Constants.URL_RETRIEVE_RECENT_PLACES,
+                null
                 , new Response.Listener<JSONArray>() {
             @Override
             public void onResponse(JSONArray response) {
+                placeListModels.clear();
+                for (int i = 0; i < response.length(); i++) {
+                    try {
+
+                        JSONObject jsonObject = response.getJSONObject(i);
+                        placeListModels.add(new PlaceListModel(
+
+                                jsonObject.getString("placename"),
+
+                                jsonObject.getString("description"),
+
+                                jsonObject.getString("placelocation"),
+
+                                jsonObject.getString("photo"),
+
+                                jsonObject.getString("likes")
+                        ));
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+
+                    }
+                }
+
+                recentPlaceAdapter = new RecentPlaceAdapter(placeListModels, getContext());
+
+                rvRecent.setAdapter(recentPlaceAdapter);
+                recentPlaceAdapter.notifyDataSetChanged();
+
+            }
+        }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
+            }
+        });
+
+        RequestQueue queue = Volley.newRequestQueue(getContext());
+        queue.add(jsonArrayRequest);
+    }
+
+    private void extractNearbyPlaces() {
+
+        JsonArrayRequest jsonArrayRequest = new JsonArrayRequest(Request.Method.GET,
+                Constants.URL_RETRIEVE_NEARBY_RECENT_PLACES,
+                null
+                , new Response.Listener<JSONArray>() {
+            @Override
+            public void onResponse(JSONArray response) {
+                placeListModels.clear();
                 for (int i = 0; i < response.length(); i++) {
                     try {
 
@@ -198,17 +263,20 @@ public class SearchFragment extends Fragment {
                 }
 
                 placeAdapter = new PlaceAdapter(placeListModels, getContext());
-                rvRecent.setAdapter(placeAdapter);
+
+                rvExplore.setAdapter(placeAdapter);
+                placeAdapter.notifyDataSetChanged();
 
             }
         }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError error) {
-                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_LONG).show();
             }
         });
 
         RequestQueue queue = Volley.newRequestQueue(getContext());
         queue.add(jsonArrayRequest);
     }
+
 }

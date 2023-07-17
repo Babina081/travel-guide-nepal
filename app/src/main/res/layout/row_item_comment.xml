@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="80dp"
+    android:orientation="vertical"
+    android:elevation="30dp"
+    app:cardCornerRadius="5dp"
+    android:layout_margin="5dp"
+    android:id="@+id/cardViewCommnet"
+    >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/imageholderCommentUser"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:src="@drawable/happygirl"
+            android:padding="2dp"
+
+            />
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginTop="10dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User Name"
+                    android:textSize="20dp"
+                    android:textStyle="bold"
+                    android:id="@+id/row_comment_user_name"
+                    android:textColor="@color/black"
+                    android:layout_centerInParent="true"
+
+                    />
+
+
+                <TextView
+                    android:id="@+id/row_comment_date_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/COLOR4"
+                    android:textSize="14sp"
+                    android:textStyle="normal"
+                    android:text="Date of Comment"
+                    android:layout_marginLeft="20dp"/>
+
+            </LinearLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="This is my comment"
+                android:textSize="18dp"
+
+                android:id="@+id/row_comment_name"
+                android:textColor="@color/black"
+
+                />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+
+
+
+</androidx.cardview.widget.CardView>

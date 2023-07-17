@@ -10,18 +10,17 @@
         android:layout_width="match_parent"
         android:layout_height="180dp"
         android:orientation="vertical"
-        android:background="@drawable/home_bg"
+        android:background="@color/SantaFe"
         android:id="@+id/linearLayout1">
 
-        <ImageView
+        <de.hdodenhof.circleimageview.CircleImageView
             android:id="@+id/imgProfile"
             android:layout_width="100dp"
             android:layout_height="100dp"
-            android:background="@drawable/profile"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="50dp"
-            />
-
+            android:src="@drawable/happygirl"
+            android:layout_centerHorizontal="true"/>
     </LinearLayout>
 
 <LinearLayout
@@ -29,24 +28,7 @@
     android:layout_height="wrap_content"
     android:layout_below="@+id/linearLayout1"
     android:orientation="vertical">
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Display Name"
-        android:textSize="20sp"
-        />
 
-    <EditText
-        android:id="@+id/etDisplayname"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Add your Display Name"
-        android:textSize="22sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -54,19 +36,98 @@
         android:layout_marginTop="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Username"
+        android:text="Firstname"
         android:textSize="20sp"/>
 
     <EditText
-        android:id="@+id/etUsername"
+        android:id="@+id/etFirstname"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Add your Username"
+        android:hint="Add your Firstname"
+        android:textSize="22sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Lastname"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:id="@+id/etLastname"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Add your Lastname"
         android:textSize="22sp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"/>
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="Email"
+        android:textSize="20sp"
+        />
+
+    <EditText
+        android:id="@+id/etEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Add your Email"
+        android:textSize="22sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:enabled="false"/>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+
+        android:layout_marginTop="10dp">
+
+        <ImageView
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+
+            android:src="@drawable/ic_baseline_lock_24" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="Change Password"
+                android:textSize="25dp"
+                android:id="@+id/cPass"
+                android:layout_marginLeft="10dp"/>
+
+            <ImageView
+                android:layout_width="30dp"
+                android:layout_height="40dp"
+                android:layout_marginTop="5dp"
+                android:src="@drawable/ic_arrow_forward"
+                android:layout_alignParentRight="true"/>
+
+        </RelativeLayout>
+    </LinearLayout>
+
+
+
+
+    <!--<TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -74,18 +135,7 @@
         android:layout_marginRight="10dp"
         android:text="Current location"
         android:textSize="20sp"/>
-
-    <EditText
-        android:id="@+id/etLocation"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Add your Current Location"
-        android:textSize="22sp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:drawableLeft="@drawable/location"/>
-
-    <TextView
+        <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
@@ -107,8 +157,44 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="160 characters maximum"
-           android:layout_marginStart="235dp"
+           android:layout_marginleft="235dp"
             />
+-->
+
+   <!-- <EditText
+        android:id="@+id/etLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Add your Current Location"
+        android:textSize="22sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:drawableLeft="@drawable/location"/>
+
+        <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:text="About You"
+        android:textSize="20sp"/>
+
+    <EditText
+        android:id="@+id/etDetails"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Write some details about yourself"
+        android:textSize="22sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="160 characters maximum"
+        android:layout_marginLeft="10dp"
+        />-->
 
     <Button
         android:id="@+id/btnSaveEdit"
@@ -118,7 +204,7 @@
         android:textSize="22sp"
         android:textStyle="bold"
         android:textColor="@color/white"
-        android:background="@drawable/bg_button_rounded2"
+        android:background="@drawable/bg_button_rounded_santfe"
         android:layout_marginRight="10dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"/>

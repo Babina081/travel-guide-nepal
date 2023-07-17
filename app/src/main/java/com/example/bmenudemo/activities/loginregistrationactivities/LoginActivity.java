@@ -9,6 +9,7 @@ import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
@@ -34,6 +35,7 @@ import com.example.bmenudemo.constantsClass.Constants;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -55,12 +57,15 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher, Com
 
     SessionManager sessionManager;
 
-    String email, password;
+    String firstname, lastname, memail, password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        //hide the action bar
+        getSupportActionBar().hide();
 
         //for remember info
         sharedPreferences = getSharedPreferences(SessionManager.SHARED_PREF_NAME, Context.MODE_PRIVATE);
@@ -73,7 +78,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher, Com
         editTextEmail = (EditText) findViewById(R.id.editTextEmail);
         editTextPassword = (EditText) findViewById(R.id.editTextPassword);
         buttonLogin = (Button) findViewById(R.id.buttonRegister);
-        textRegister = (TextView) findViewById(R.id.textLogin);
+        textRegister = (TextView) findViewById(R.id.textRegister);
         mCheckBox = (CheckBox) findViewById(R.id.checkbox);
         chRemember = (CheckBox) findViewById(R.id.chRemember);
         back = (Button) findViewById(R.id.btnBacktoSigninOptions);
@@ -90,6 +95,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher, Com
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
               /*  String mEmail = editTextEmail.getText().toString().trim();
                 String mPassword = editTextPassword.getText().toString().trim();
                 if (mEmail.isEmpty() == false && mPassword.isEmpty() == false) {
@@ -100,19 +106,18 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher, Com
                 }*/
 
 
-
-                email= editTextEmail.getText().toString();
+/*email= editTextEmail.getText().toString();
                 password = editTextPassword.getText().toString();
-
                 if (!email.isEmpty() || !password.isEmpty()) {
                     login(email, password);
 //                    login();
                 } else {
                     editTextEmail.setError("Please insert email");
                     editTextPassword.setError("Please insert password");
-                }
+                }*/
 
-//                Login();
+
+                Login();
 
             }
         });
@@ -132,8 +137,122 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher, Com
         editTextPassword.addTextChangedListener(this);
         chRemember.setOnCheckedChangeListener(this);
 
+        hideSoftKeyboard();
     }
 
+    // Login Process Here
+    public void Login() {
+
+        progressDialog.setTitle("Please wait...");
+
+        final String email = editTextEmail.getText().toString().trim();
+        final String password = editTextPassword.getText().toString().trim();
+
+        // Check if empty
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "You must provide email and password ", Toast.LENGTH_SHORT).show();
+        }
+
+        // Otherwise
+        else {
+            progressDialog.show();
+            // use Volley StringRequest
+            StringRequest request = new StringRequest(Request.Method.POST, Constants.URL_LOGIN, new Response.Listener<String>() {
+                @Override
+                public void onResponse(String response) {
+//                    Log.d("response", "onResponse: " + response);
+                    try {
+                        JSONObject object = new JSONObject(response);
+                        String success = object.getString("success");
+
+                        JSONArray jsonArray = object.getJSONArray("data");
+                        if (success.equals("1")) {
+                            progressDialog.dismiss();
+
+                            for (int i = 0; i < jsonArray.length(); i++) {
+                                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                                firstname = jsonObject.getString("firstname");
+                                lastname = jsonObject.getString("lastname");
+                                memail = jsonObject.getString("email");
+                            }
+                            Toast.makeText(LoginActivity.this, "login success", Toast.LENGTH_LONG).show();
+
+                            /*//Set Profile
+                            DatabaseHelper helper= new DatabaseHelper();
+                            helper.databaseHelper(getApplicationContext(), sessionManager.getEmail(), sessionManager.getPassword(), new VolleyCallBack() {
+                                @Override
+                                public void onSuccessResponse(List<UserGetterSetter> list) {
+
+                                }
+                            });*/
+
+                            //Redirect Activity
+                            Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
+                            intent.putExtra("firstname", firstname);
+                            intent.putExtra("lastname", lastname);
+                            intent.putExtra("email", memail);
+                            startActivity(intent);
+                            finish();
+
+                            //store login in session
+                            /*sessionManager.setLogin(true);
+                            sessionManager.setEmail(memail);
+                            sessionManager.setFirstname(firstname);
+                            sessionManager.setLastname(lastname);*/
+                            sessionManager.createSession(firstname, lastname, memail);
+
+                        } else {
+                            progressDialog.dismiss();
+                            Toast.makeText(LoginActivity.this, "User not found", Toast.LENGTH_SHORT).show();
+                        }
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                        Toast.makeText(LoginActivity.this, "JSon Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
+                    }
+
+
+                }
+            }, new Response.ErrorListener() {
+                @Override
+                public void onErrorResponse(VolleyError error) {
+                    progressDialog.dismiss();
+                    Toast.makeText(LoginActivity.this, "No internet connection", Toast.LENGTH_SHORT).show();
+
+                }
+            }) {
+                @Override
+                protected Map<String, String> getParams() throws AuthFailureError {
+                    Map<String, String> params = new HashMap<String, String>();
+                    params.put("email", email);
+                    params.put("password", password);
+                    return params;
+                }
+            };
+            RequestQueue requestQueue = Volley.newRequestQueue(this, null);
+            requestQueue.add(request);
+        }
+    }
+
+    /*private void login(String em, String pw) {
+
+        progressDialog.show();
+
+        if (password.equals("")) {
+            editTextPassword.setError("Please enter password");
+            progressDialog.dismiss();
+        }
+        if (email.equals("babitamoo333@gmail.com") && password.equals("root")) {
+            sessionManager.setLogin(true);
+            sessionManager.setEmail(email);
+            moveToMainActivity();
+            progressDialog.dismiss();
+
+        } else {
+            Toast.makeText(this, "Wrong Password", Toast.LENGTH_SHORT).show();
+            progressDialog.dismiss();
+        }
+    }
+*/
   /*  public void login(){
 
         progressDialog.show();
@@ -194,104 +313,10 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher, Com
     requestQueue.add(stringRequest);
 }*/
 
-    // Login Process Here
-    public void Login() {
 
-        progressDialog.setTitle("Please wait...");
-        final String email = editTextEmail.getText().toString().trim();
-        final String password = editTextPassword.getText().toString().trim();
-        // Check if empty
-        if (email.isEmpty() || password.isEmpty()) {
-            Toast.makeText(this, "You must provide email and password ", Toast.LENGTH_SHORT).show();
+    /*
 
-        }
-        // Otherwise
-        else {
-            progressDialog.show();
-            // use Volley StringRequest
-            StringRequest request = new StringRequest(Request.Method.POST, Constants.URL_LOGIN, new Response.Listener<String>() {
-                @Override
-                public void onResponse(String response) {
-//                    Log.d("response", "onResponse: " + response);
-                    try {
-                        JSONObject object = new JSONObject(response);
-                        String success = object.getString("success");
-//                        Log.d("check", "onResponse: " + success);
-
-                        if (success.equals("1")) {
-                            progressDialog.dismiss();
-                            Toast.makeText(LoginActivity.this, "login success", Toast.LENGTH_SHORT).show();
-
-                            //store login in session
-                            sessionManager.setLogin(true);
-                            sessionManager.setUsername(email);
-
-                            /*//Set Profile
-                            DatabaseHelper helper= new DatabaseHelper();
-                            helper.databaseHelper(getApplicationContext(), sessionManager.getEmail(), sessionManager.getPassword(), new VolleyCallBack() {
-                                @Override
-                                public void onSuccessResponse(List<UserGetterSetter> list) {
-
-                                }
-                            });*/
-
-                            //Redirect Activity
-                            startActivity(new Intent(LoginActivity.this, MainActivity.class));
-
-                        } else {
-                            progressDialog.dismiss();
-                            Toast.makeText(LoginActivity.this, "User not found", Toast.LENGTH_SHORT).show();
-                        }
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                        Toast.makeText(LoginActivity.this, "JSon Error: " + e.getMessage(), Toast.LENGTH_SHORT).show();
-                    }
-
-
-                }
-            }, new Response.ErrorListener() {
-                @Override
-                public void onErrorResponse(VolleyError error) {
-                    progressDialog.dismiss();
-                    Toast.makeText(LoginActivity.this, "No internet connection", Toast.LENGTH_SHORT).show();
-
-                }
-            }) {
-                @Override
-                protected Map<String, String> getParams() throws AuthFailureError {
-                    Map<String, String> params = new HashMap<String, String>();
-                    params.put("email", email);
-                    params.put("pass", password);
-                    return params;
-                }
-            };
-            RequestQueue requestQueue = Volley.newRequestQueue(this, null);
-            requestQueue.add(request);
-        }
-    }
-
-
-         private void login(String em, String pw) {
-
-             progressDialog.show();
-
-             if (password.equals("")) {
-                 editTextPassword.setError("Please enter password");
-                 progressDialog.dismiss();
-             }
-             if (email.equals("babitamoo333@gmail.com") && password.equals("root")) {
-                 sessionManager.setLogin(true);
-                 sessionManager.setUsername(email);
-                 moveToMainActivity();
-                 progressDialog.dismiss();
-
-             } else {
-                 Toast.makeText(this, "Wrong Password", Toast.LENGTH_SHORT).show();
-                 progressDialog.dismiss();
-             }
-         }/*
-
-         *//*
+     *//*
 
         StringRequest stringRequest = new StringRequest(Request.Method.POST, "http://192.168.254.191/travel/login_practice.php",
                 new Response.Listener<String>() {
@@ -349,12 +374,12 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher, Com
 
     }*/
 
-        private void moveToMainActivity() {
-            Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
-            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(intent);
-            finish();
-        }
+    private void moveToMainActivity() {
+        Intent intent = new Intent(LoginActivity.this, IntroActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+        startActivity(intent);
+        finish();
+    }
 
     /*private void login(final String email, final String password) {
 
@@ -389,7 +414,7 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher, Com
                             e.printStackTrace();
                         }*//*
 
-         *//*
+     *//*
                               //ATTEMPT 2
                               try {
                                JSONObject jsonObject = new JSONObject(response);
@@ -478,55 +503,58 @@ public class LoginActivity extends AppCompatActivity implements TextWatcher, Com
         Toast.makeText(getApplicationContext(), "Fill the empty fields", Toast.LENGTH_LONG).show();
         progressDialog.dismiss();
     }*//*
-         */
+     */
 
-        /*onclick listener for create an account and go to registration page*/
-        public void register (View view){
-            Intent intent = new Intent(this, RegisterActivity.class);
-            startActivity(intent);
-            finish();
-        }
+    /*onclick listener for create an account and go to registration page*/
+    public void register(View view) {
+        Intent intent = new Intent(this, RegisterActivity.class);
+        startActivity(intent);
+        finish();
+    }
 
-        /*  methods created by implementing TextWatcher and Compound Button*/
-        @Override
-        public void beforeTextChanged (CharSequence s,int start, int count, int after){
-
-        }
-
-        @Override
-        public void onTextChanged (CharSequence s,int start, int before, int count){
-            managePrefs();
-        }
-
-        @Override
-        public void afterTextChanged (Editable s){
-
-        }
-
-        @Override
-        public void onCheckedChanged (CompoundButton buttonView,boolean isChecked){
-            managePrefs();
-        }
-
-        private void managePrefs () {
-            if (chRemember.isChecked()) {
-                editor.putString(SessionManager.Email, editTextEmail.getText().toString().trim());
-                editor.putString(SessionManager.Password, editTextPassword.getText().toString().trim());
-                editor.putBoolean(SessionManager.REMEMBER, true);
-                editor.apply();
-            } else {
-                editor.putString(SessionManager.Email, "");
-                editor.putString(SessionManager.Password, "");
-                editor.putBoolean(SessionManager.REMEMBER, false);
-                editor.apply();
-            }
-        }
-        /*implemented methods ends*/
-
-        public void forgetPw (View view){
-            startActivity(new Intent(LoginActivity.this, ForgetPassword.class));
-            finish();
-        }
-
+    /*  methods created by implementing TextWatcher and Compound Button*/
+    @Override
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
     }
+
+    @Override
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
+        managePrefs();
+    }
+
+    @Override
+    public void afterTextChanged(Editable s) {
+
+    }
+
+    @Override
+    public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+        managePrefs();
+    }
+
+    private void managePrefs() {
+        if (chRemember.isChecked()) {
+            editor.putString(SessionManager.Email, editTextEmail.getText().toString().trim());
+            editor.putString(SessionManager.Password, editTextPassword.getText().toString().trim());
+            editor.putBoolean(SessionManager.REMEMBER, true);
+            editor.apply();
+        } else {
+            editor.putString(SessionManager.Email, "");
+            editor.putString(SessionManager.Password, "");
+            editor.putBoolean(SessionManager.REMEMBER, false);
+            editor.apply();
+        }
+    }
+    /*implemented methods ends*/
+
+    public void forgetPw(View view) {
+        startActivity(new Intent(LoginActivity.this, ForgetPassword.class));
+        finish();
+    }
+
+
+    private void hideSoftKeyboard() {
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
+}

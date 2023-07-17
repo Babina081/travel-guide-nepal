@@ -29,6 +29,7 @@ public class SessionManager {
 
     public void setLogin(boolean login) {
         editor.putBoolean(LOGIN, login);
+
         editor.commit();
     }
 
@@ -36,14 +37,24 @@ public class SessionManager {
         return sharedPreferences.getBoolean(LOGIN, false);
     }
 
-    public void setUsername(String email) {
-        editor.putString(Email, email);
-        editor.commit();
+    public void setUserId(final String userId) {
+        editor.putString("Key_Id", userId);
+        editor.apply();
     }
 
-    public String getUsername() {
+    public String getUserId() {
+        return sharedPreferences.getString("Key_Id", "");
+    }
+
+    public void setEmail(String email) {
+        editor.putString(Email, email);
+        editor.apply();
+    }
+
+    public String getEmail() {
         return sharedPreferences.getString(Email, "");
     }
+
 
     public void setPassword(String password) {
         editor.putString(Password, password);
@@ -54,7 +65,7 @@ public class SessionManager {
         return sharedPreferences.getString(Password, "");
     }
 
-   /* public void setFirstname(String firstname) {
+    public void setFirstname(String firstname) {
         editor.putString(FIRSTNAME, firstname);
         editor.commit();
     }
@@ -70,8 +81,7 @@ public class SessionManager {
 
     public String getLastname() {
         return sharedPreferences.getString(LASTNAME, "");
-    }*/
-
+    }
 
 
     public static boolean getBooleanPreference(Context context, String key, boolean defaultValue) {
@@ -83,6 +93,15 @@ public class SessionManager {
         }
         return value;
     }
+
+    public void createSession(String firstname, String lastname, String email) {
+        editor.putBoolean(LOGIN, true);
+        editor.putString(FIRSTNAME, firstname);
+        editor.putString(LASTNAME, lastname);
+        editor.putString(Email, email);
+        editor.apply();
+    }
+
 
    /* public void createSession(String firstname, String lastname, String email) {
         editor.putBoolean(LOGIN, true);

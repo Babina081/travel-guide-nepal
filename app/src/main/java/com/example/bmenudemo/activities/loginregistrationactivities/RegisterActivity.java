@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.se.omapi.Session;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -41,6 +42,9 @@ public class RegisterActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        //hide the action bar
+        getSupportActionBar().hide();
+
         sessionManager = new SessionManager(this);
 
         editTextFirstname = (EditText) findViewById(R.id.editTextFirstname);
@@ -75,6 +79,8 @@ public class RegisterActivity extends AppCompatActivity {
             }
         });
 
+        hideSoftKeyboard();
+
     }
 
     public void register() {
@@ -100,6 +106,7 @@ public class RegisterActivity extends AppCompatActivity {
                     if (response.equalsIgnoreCase("Registration Success")) {
                         Toast.makeText(getApplicationContext(), "Not Registered", Toast.LENGTH_LONG).show();
                         progressDialog.dismiss();
+
                     } else {
                         startActivity(new Intent(RegisterActivity.this, LoginActivity.class));
                         Toast.makeText(getApplicationContext(), "Registered", Toast.LENGTH_LONG).show();
@@ -138,5 +145,8 @@ public class RegisterActivity extends AppCompatActivity {
         finish();
     }
 
+    private void hideSoftKeyboard() {
+        this.getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_ALWAYS_HIDDEN);
+    }
 
 }

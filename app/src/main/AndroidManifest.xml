@@ -9,6 +9,14 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity
+            android:name=".activities.homePageActivities.DisplayPlaceAsPerCategory"
+            android:parentActivityName=".activities.homePageActivities.MainActivity"
+            android:label="Places"/>
+        <activity
+            android:name=".activities.homePageActivities.DisplayPlaceAsPerState"
+            android:parentActivityName=".activities.homePageActivities.MainActivity"
+            android:label="Places"/>
         <activity android:name=".activities.loginregistrationactivities.forgetpassword.PasswordChangeBYMsg" />
         <activity android:name=".activities.loginregistrationactivities.forgetpassword.PasswordUpdateSuccess" />
         <activity android:name=".activities.loginregistrationactivities.forgetpassword.ChangePassword" />
@@ -20,36 +28,35 @@
             android:name=".activities.homePageActivities.EditProfileActivity"
             android:label="@string/edit_pofile"
             android:parentActivityName=".activities.homePageActivities.MainActivity" />
-        <activity android:name=".activities.ImageSliderActivity" />
-        <activity
-            android:name=".activities.map.MapActivityUsing_OnMapReadyCallback"
-            android:label="@string/map_location" />
-        <activity android:name=".activities.map.MapActivityFragment" />
-        <activity android:name=".activities.loginregistrationactivities.SplashActivity">
+        <activity android:name=".activities.ImageSliderActivity"></activity>
+        <activity android:name=".activities.map.MapActivityFragment"
+            android:parentActivityName=".activities.homePageActivities.MainActivity"
+            android:label="Map">
+
+        </activity>
+        <activity android:name=".activities.loginregistrationactivities.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".activities.map.MapActivity"
-            android:label="@string/map_location" />
-        <activity android:name=".activities.HomePageActivity" />
-        <activity android:name=".activities.TabLayoutWithFragments">
-
-        </activity>
-        <activity android:name=".activities.homePageActivities.MainActivity" >
+        <activity android:name=".activities.homePageActivities.MainActivity">
 
         </activity>
         <activity android:name=".activities.loginregistrationactivities.RegisterActivity" />
-        <activity android:name=".activities.loginregistrationactivities.LoginActivity" >
-
-        </activity>
+        <activity android:name=".activities.loginregistrationactivities.LoginActivity" />
         <activity android:name=".activities.loginregistrationactivities.Success" />
-        <activity android:name=".activities.homePageActivities.Add_Data_Activity" />
         <activity
             android:name=".activities.homePageActivities.PlaceDetailActivity"
+            android:parentActivityName=".activities.homePageActivities.MainActivity" />
+        <activity
+            android:name=".activities.map.MapActivityCodingMitch"
+            android:parentActivityName=".activities.homePageActivities.MainActivity">
+
+        </activity>
+        <activity
+            android:name=".activities.homePageActivities.NotificationActivity"
             android:parentActivityName=".activities.homePageActivities.MainActivity" />
         <!--
 <receiver android:name=".MySMSBroadcastReceiver" android:exported="true"
@@ -61,12 +68,13 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/map_key" />
     </application>
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
 </manifest>

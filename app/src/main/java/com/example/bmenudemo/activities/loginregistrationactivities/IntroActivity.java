@@ -110,7 +110,7 @@ public class IntroActivity extends AppCompatActivity {
         skip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                editor.putBoolean(IS_INTRO_OPENED,false);
+//                editor.putBoolean(IS_INTRO_OPENED,false);
                 startActivity(new Intent(IntroActivity.this, MainActivity.class));
                 finish();
             }

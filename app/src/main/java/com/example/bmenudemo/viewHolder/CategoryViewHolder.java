@@ -15,11 +15,15 @@ public class CategoryViewHolder extends RecyclerView.ViewHolder {
     public TextView categoryname;
     public CardView cardView;
 
+//    public RecyclerView rvSubItem;
+
     public CategoryViewHolder(@NonNull View itemView) {
         super(itemView);
 
         categoryname = (TextView) itemView.findViewById(R.id.row_category_name);
         cardView = (CardView) itemView.findViewById(R.id.cardviewExplore);
+
+//        rvSubItem = itemView.findViewById(R.id.rv_sub_item);
 
     }
 }

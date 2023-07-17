@@ -8,11 +8,10 @@
     android:elevation="100dp"
     app:layout_behavior="@string/hide_bottom_view_on_scroll_behavior">
 
-
     <View
         android:layout_width="match_parent"
         android:layout_height="1dp"
-        android:background="#f0f0f0" />
+        android:background="@color/SantaFe" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -26,7 +25,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/home"
+            android:src="@drawable/ic_home"
             />
 
         <ImageView
@@ -35,13 +34,9 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/search" />
+            android:src="@drawable/ic_loupe" />
 
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:padding="10dp" />
+
 
         <ImageView
             android:id="@+id/favouriteBtnIv"
@@ -49,7 +44,7 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/favorite" />
+            android:src="@drawable/ic_heart_shape_outline_with_lining_at_right_edge" />
 
         <ImageView
             android:id="@+id/profileBtnIv"
@@ -57,9 +52,8 @@
             android:layout_height="match_parent"
             android:layout_weight="1"
             android:padding="10dp"
-            android:src="@drawable/profileicon" />
+            android:src="@drawable/ic_user" />
 
 
     </LinearLayout>
-
 </RelativeLayout>

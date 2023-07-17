@@ -12,7 +12,7 @@ import com.example.bmenudemo.R;
 
 public class ChangePassword extends AppCompatActivity {
 
-    EditText et1,et2,et3;
+    EditText et1,et2;
     Button btn1;
 
     @Override
@@ -20,7 +20,7 @@ public class ChangePassword extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_change_password);
 
-        et1=findViewById(R.id.editTextOldPasswordFP);
+
         et2=findViewById(R.id.editTextNewPasswordFP);
         et2=findViewById(R.id.editTextConfirmPasswordFP);
         btn1=findViewById(R.id.btnchangepw_update);

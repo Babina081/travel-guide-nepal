@@ -39,14 +39,13 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Featured Places"
+                android:text="Category"
                 android:textColor="@color/Twine"
                 android:textStyle="bold"
                 android:textSize="22sp"
                 android:layout_marginLeft="5dp"
 
-               />
-
+                />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -54,14 +53,48 @@
                 android:text="See All"
                 android:textColor="@color/Twine"
                 android:textSize="22sp"
-               android:layout_marginLeft="180dp"/>
+                android:layout_marginLeft="200dp"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rv_explore"
+            android:id="@+id/rv_category"
             />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp"
+            android:elevation="10dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Recent Added Places"
+                android:textColor="@color/Twine"
+                android:textStyle="bold"
+                android:textSize="22sp"
+                android:layout_marginLeft="5dp"
+
+                />
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="See All"
+                android:textColor="@color/Twine"
+                android:textSize="22sp"
+                android:layout_marginLeft="100dp"/>
+        </LinearLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_recent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            />
+
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -86,78 +119,13 @@
                 android:text="See All"
                 android:textColor="@color/Twine"
                 android:textSize="22sp"
-                android:layout_marginLeft="180dp"/>
+                android:layout_marginLeft="145dp"/>
         </LinearLayout>
 
         <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/rv_featured_place"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:elevation="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Recent Places"
-                android:textColor="@color/Twine"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:layout_marginLeft="5dp"
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="@color/Twine"
-                android:textSize="22sp"
-                android:layout_marginLeft="180dp"/>
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/recent_recycler"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="8dp"
-            />
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:layout_marginTop="10dp"
-            android:elevation="10dp">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Category"
-                android:textColor="@color/Twine"
-                android:textStyle="bold"
-                android:textSize="22sp"
-                android:layout_marginLeft="5dp"
-
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="See All"
-                android:textColor="@color/Twine"
-                android:textSize="22sp"
-                android:layout_marginLeft="230dp"/>
-        </LinearLayout>
-
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:id="@+id/rv_category"
+            android:id="@+id/rv_explore"
             />
 
     </LinearLayout>

@@ -22,4 +22,14 @@
     <color name="SantaFe">#AE6E4E</color>
     <color name="SorrellBrown">#f5f5dd</color>
     <color name="Twine">#C4A35A</color>
+
+    <color name="COLOR1">#F8F8F7</color>
+    <color name="COLOR2">#CFCDD7</color>
+    <color name="COLOR3">#A09DB0</color>
+    <color name="COLOR4">#5B5A62</color>
+    <color name="COLOR5">#D7CABD</color>
+
+    <color name="de_selected_color">#FF000000</color>
+    <color name="selected_color">#E63638</color>
+
 </resources>
